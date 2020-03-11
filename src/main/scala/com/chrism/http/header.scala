@@ -14,9 +14,7 @@
  */
 package com.chrism.http
 
-import com.chrism.commons.util.ProductUtils
-
-import scala.collection.mutable
+import com.chrism.commons.util.{ProductUtils, StringUtils}
 
 final case class Header(name: String, value: String) extends NameValueLike[Header] {
 
@@ -55,7 +53,7 @@ final class Headers private (override val pairs: Seq[Header]) extends NameValueP
 
   override def hashCode(): Int = ProductUtils.productHashCode(this)
 
-  override def toString: String = ProductUtils.productToString(this)
+  override def toString: String = pairs.mkString(StringUtils.lineSeparator)
 }
 
 object Headers extends NameValuePairsCompanionLike[Header] {
@@ -87,36 +85,4 @@ object Headers extends NameValuePairsCompanionLike[Header] {
 
     def apply(): Builder = new Builder()
   }
-
-//  final class Builder private () {
-//
-//    private[this] val _headers: mutable.ListBuffer[Header] = mutable.ListBuffer.empty
-//
-//    def build(): Headers = Headers(_headers)
-//
-//    def add(header: Header): this.type = {
-//      _headers += header
-//      this
-//    }
-//
-//    def add(name: String, value: String): this.type = add(Header(name, value))
-//
-//    def add(kv: (String, String)): this.type = add(kv._1, kv._2)
-//
-//    def addAll(headers: Headers): this.type = addAll(headers.pairs)
-//
-//    def addAll(headers: Iterable[Header]): this.type = {
-//      _headers ++= headers
-//      this
-//    }
-//
-//    def +=(header: Header): this.type = add(header)
-//
-//    def +=(kv: (String, String)): this.type = add(kv._1, kv._2)
-//
-//    def ++=(headers: Headers): this.type = addAll(headers)
-//
-//    def ++=(headers: Iterable[Header]): this.type = addAll(headers)
-//  }
-
 }

@@ -23,16 +23,12 @@ object Dependencies {
   private val Specs2CoreVersion: String = "4.7.0"
   private val ScalatestPlusPlayVersion: String = "4.0.3"
 
-  val Commons4s: ModuleID = "com.chrism" %% "commons4s" % "0.0.5"
+  val Commons4s: ModuleID = "com.chrism" %% "commons4s" % "0.0.6"
 
   val PlayAhcWs: ModuleID = ("com.typesafe.play" %% "play-ahc-ws" % PlayVersion)
     .exclude("org.slf4j", "slf4j-api")
 
   val PlayLogback: ModuleID = "com.typesafe.play" %% "play-logback" % PlayVersion
-
-  val SwaggerPlay2: ModuleID = "io.swagger" %% "swagger-play2" % "1.7.1"
-  val WebjarsPlay: ModuleID = "org.webjars" %% "webjars-play" % PlayVersion
-  val SwaggerUi: ModuleID = "org.webjars" % "swagger-ui" % "3.23.8"
 
   val Scalacheck: ModuleID = "org.scalacheck" %% "scalacheck" % ScalacheckVersion
   val Scalatest: ModuleID = "org.scalatest" %% "scalatest" % ScalatestVersion

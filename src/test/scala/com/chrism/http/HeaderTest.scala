@@ -62,11 +62,24 @@ final class HeaderTest extends FunTestSuite {
     assert(h2.compare(h1) > 0)
   }
 
+  test("Header: toString returns a string formatted for HTTP header") {
+    val h = Header("Access-Control-Request-Method", "value1")
+    assert(h.toString === "Access-Control-Request-Method: value1")
+  }
+
   test("Headers: equals/hashCode") {
     val headers1 = Headers.ofTuple("name1" -> "value1", "name2" -> "value2", "name3" -> "value3")
     val headers2 = Headers.ofTuple("name2" -> "value2", "name3" -> "value3", "name1" -> "value1")
     assert(headers1 === headers2)
     assert(headers1.hashCode() === headers2.hashCode())
+  }
+
+  test("Headers: toString returns a string formatted for HTTP headers") {
+    val headers = Headers.ofHeader(Header("name1", "value1"), Header("name2", "value2"))
+    val expected =
+      """name1: value1
+        |name2: value2""".stripMargin
+    assert(headers.toString === expected)
   }
 
   test("building Headers") {

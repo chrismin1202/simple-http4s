@@ -16,7 +16,7 @@ package com.chrism.http
 
 import java.net.URLEncoder
 
-import com.chrism.commons.util.{ProductUtils, StringUtils}
+import com.chrism.commons.util.ProductUtils
 
 final case class QueryParam(name: String, value: String) extends NameValueLike[QueryParam] {
 
