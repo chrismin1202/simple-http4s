@@ -50,7 +50,7 @@ as a `<dependency>`.
 
 In a sbt project, add 
 ```
-resolvers += "chrism commons4s GitHub Package Registry" at "https://maven.pkg.github.com/chrismin1202/simple-http4s"
+resolvers += "chrism simple-http4s GitHub Package Registry" at "https://maven.pkg.github.com/chrismin1202/simple-http4s"
 ```
 as a resolver and include
 ```
