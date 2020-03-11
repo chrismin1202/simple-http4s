@@ -21,17 +21,12 @@ object Dependencies {
   private val ScalacheckVersion: String = "1.14.0"
   private val ScalatestVersion: String = "3.0.8"
   private val Specs2CoreVersion: String = "4.7.0"
-  private val ScalatestPlusPlayVersion: String = "4.0.3"
 
   val Commons4s: ModuleID = "com.chrism" %% "commons4s" % "0.0.6"
 
-  val PlayAhcWs: ModuleID = ("com.typesafe.play" %% "play-ahc-ws" % PlayVersion)
-    .exclude("org.slf4j", "slf4j-api")
-
-  val PlayLogback: ModuleID = "com.typesafe.play" %% "play-logback" % PlayVersion
+  val PlayAhcWs: ModuleID = "com.typesafe.play" %% "play-ahc-ws" % PlayVersion
 
   val Scalacheck: ModuleID = "org.scalacheck" %% "scalacheck" % ScalacheckVersion
   val Scalatest: ModuleID = "org.scalatest" %% "scalatest" % ScalatestVersion
   val Specs2Core: ModuleID = "org.specs2" %% "specs2-core" % Specs2CoreVersion
-  val ScalatestPlusPlay: ModuleID = "org.scalatestplus.play" %% "scalatestplus-play" % ScalatestPlusPlayVersion
 }

@@ -21,7 +21,6 @@ import akka.stream.ActorMaterializer
 import com.chrism.commons.json.JsonWritable
 import com.typesafe.sslconfig.ssl.SSLLooseConfig
 import org.json4s.Formats
-import play.api.Logging
 import play.api.libs.ws.ahc.{AhcWSClientConfig, AhcWSClientConfigFactory, StandaloneAhcWSClient}
 import play.api.libs.ws.{BodyWritable, StandaloneWSClient, StandaloneWSResponse}
 
@@ -40,7 +39,7 @@ import scala.concurrent.{Await, Future}
   *
   * Note that this implementation is not guaranteed to be thread-safe. Consider using [[ThreadLocal]].
   */
-final class HttpClient private (config: AhcWSClientConfig) extends AutoCloseable with Logging {
+final class HttpClient private (config: AhcWSClientConfig) extends AutoCloseable {
 
   import HttpClient.DefaultTimeout
 
@@ -58,11 +57,9 @@ final class HttpClient private (config: AhcWSClientConfig) extends AutoCloseable
     checkClosed()
 
     if (_system == null) {
-      logger.info("Initializing ActorSystem...")
       _system = ActorSystem()
     }
     if (_client == null) {
-      logger.info("Initializing StandaloneWSClient...")
       _client = StandaloneAhcWSClient(config = config)(ActorMaterializer()(_system))
     }
     _client
@@ -182,17 +179,13 @@ final class HttpClient private (config: AhcWSClientConfig) extends AutoCloseable
     checkClosed()
 
     if (_client != null) {
-      logger.info("Closing the client...")
       _client.close()
       _client = null
-      logger.info(s"Successfully closed the client.")
     }
 
     if (_system != null) {
-      logger.info("Closing the system...")
       _system.terminate()
       _system = null
-      logger.info("Successfully closed the system.")
     }
 
     _closed = true
@@ -200,12 +193,11 @@ final class HttpClient private (config: AhcWSClientConfig) extends AutoCloseable
 
   private[this] def checkClosed(): Unit =
     if (_closed) {
-      logger.error("The client has already been closed!")
       throw new IOException("The client has already been closed!")
     }
 }
 
-object HttpClient extends Logging {
+object HttpClient {
 
   import scala.concurrent.duration._
 

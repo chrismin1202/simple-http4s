@@ -17,7 +17,7 @@ import Dependencies._
 organization := "com.chrism"
 name := "simple-http4s"
 
-version := "0.0.1"
+version := "0.0.2"
 
 scalaVersion := "2.12.10"
 
@@ -44,7 +44,6 @@ libraryDependencies ++= Seq(
   Scalatest % Test,
   Specs2Core % Test,
   Commons4s % Test classifier "tests",
-  ScalatestPlusPlay % Test,
 )
 
 val meta = "META.INF(.)*".r
