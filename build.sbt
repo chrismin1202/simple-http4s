@@ -17,7 +17,7 @@ import Dependencies._
 organization := "com.chrism"
 name := "simple-http4s"
 
-version := "0.0.2"
+version := "0.0.3"
 
 scalaVersion := "2.12.10"
 

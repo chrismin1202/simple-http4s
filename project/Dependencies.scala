@@ -22,7 +22,7 @@ object Dependencies {
   private val ScalatestVersion: String = "3.0.8"
   private val Specs2CoreVersion: String = "4.7.0"
 
-  val Commons4s: ModuleID = "com.chrism" %% "commons4s" % "0.0.6"
+  val Commons4s: ModuleID = "com.chrism" %% "commons4s" % "0.0.8"
 
   val PlayAhcWs: ModuleID = "com.typesafe.play" %% "play-ahc-ws" % PlayVersion
 
